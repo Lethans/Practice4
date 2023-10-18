@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>embedded_script</title>
+	</head>
+	<body>
+		<label for="">Rumus Luas Segitiga</label>
+		<input type="number" id="tinggi" placeholder="masukan tinggi" />
+		<input type="number" id="alas" placeholder="masukan alas" />
+		<button id="hitung">Hitung</button>
+		<label for="">Hasil <label for="" id="hasil">0</label></label>
+
+		<br />
+		<br />
+
+		<label>Konversi nilai angka ke huruf</label><br />
+
+		<input
+			class="nilai_angka"
+			type="number"
+			placeholder="masukan nilai angka"
+		/><br />
+		<button onclick="konversi ()">Konversi</button><br />
+
+		<label>Nilai huruf kamu adalah : </label> <label id="hasil2">-</label><br/>
+
+        <br>
+        <br>
+        <label>Daftar Belanja</label><br>
+        <input type="text" id="nama_barang" placeholder="Nama Barang">
+        <input type="number" id="jumlah" onkeyup="hitung_total()" placeholder="Jumlah">
+        <input type="number" id="harga" onkeyup="hitung_total()" placeholder="Harga">
+        <input type="number" id="total" readonly placeholder="Total"><br>
+        <button onclick="cetak()">Cetak</button><br>
+
+		<script>
+			window.alert("Selamat datang di halaman Embedded Script");
+			document.getElementById("hitung").onclick = function () {
+				hitung_luas_segitiga();
+			};
+			function hitung_luas_segitiga() {
+				var a = document.getElementById("alas").value;
+				var t = document.getElementById("tinggi").value;
+				var hasil = 0.5 * a * t;
+				document.getElementById("hasil").innerHTML = hasil;
+			}
+
+			function konversi() {
+				var nilai_angka =
+					document.getElementsByClassName("nilai_angka");
+				if ((nilai_angka[0].value >= 90)) grade = "A";
+				else if ((nilai_angka[0].value >= 80)) grade = "B+";
+				else if (nilai_angka[0].value >= 70) grade = "B";
+				else if (nilai_angka[0].value >= 60) grade = "C+";
+				else if (nilai_angka[0].value >= 50) grade = "C";
+				else if (nilai_angka[0].value >= 40) grade = "D";
+				else if (nilai_angka[0].value > 30) grade = "E";
+				else grade = "F";
+
+				document.getElementById("hasil2").innerHTML = grade;
+			}
+
+            function hitung_total(){
+                var jumlah = document.getElementById("jumlah").value;
+                var harga = document.getElementById("harga").value;
+                if (jumlah=="" || harga==""){
+                    document.getElementById('total').value = "0";
+                }
+                else{
+                    document.getElementById('total').value = jumlah*harga;
+                }
+            }
+            function cetak(){
+                window.print();
+            }
+		</script>
+	</body>
+</html>
